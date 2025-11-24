@@ -10,7 +10,7 @@ return {
 				"dockerls",
 				"elixirls",
 				"eslint",
-				-- "gopls",
+				"gopls",
 				"html",
 				"intelephense",
 				-- "java_language_server",
@@ -18,26 +18,42 @@ return {
 				"jsonls",
 				"kotlin_language_server",
 				"lua_ls",
-				"php-cs-fixer",
-				"pint",
 				"postgres_lsp",
-				"prettier",
 				"rust-analyzer",
 				"shopify_theme_ls",
 				"sqlls",
-				"stylua",
 				"svelte",
 				"tailwindcss",
 				"ts_ls",
 				"vue_ls",
 				"yamlls",
 				"zls",
+			},
+			ensure_formatter_installed = {
+				"php-cs-fixer",
+				"pint",
+				"prettier",
+				"stylua",
 			}
+
 		},
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
 			"neovim/nvim-lspconfig",
 		},
+		config = function(_, opts)
+			local registry = require("mason-registry")
+
+			for _, formatter_name in ipairs(opts.ensure_formatter_installed)  do
+				local ok, formatter = pcall(registry.get_package, formatter_name)
+
+				if ok then
+					if not formatter:is_installed() then
+						formatter:install()
+					end
+				end
+			end
+		end
 	},
 	{
 		"onsails/lspkind.nvim"
