@@ -1,6 +1,11 @@
 return {
-	'MagicDuck/grug-far.nvim',
+	"MagicDuck/grug-far.nvim",
 	keys = {
-		{ "<leader>fr", function() require("grug-far").open() end }
-	}
+		{
+			"<leader>fr",
+			function()
+				require("grug-far").open()
+			end,
+		},
+	},
 }
