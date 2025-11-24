@@ -1,6 +1,10 @@
 return {
 	{
 		"mason-org/mason-lspconfig.nvim",
+		dependencies = {
+			{ "mason-org/mason.nvim", opts = {} },
+			"neovim/nvim-lspconfig",
+		},
 		opts = {
 			ensure_installed = {
 				"astro",
@@ -34,17 +38,14 @@ return {
 				"pint",
 				"prettier",
 				"stylua",
-			}
-
-		},
-		dependencies = {
-			{ "mason-org/mason.nvim", opts = {} },
-			"neovim/nvim-lspconfig",
+			},
 		},
 		config = function(_, opts)
+			require("mason-lspconfig").setup()
+
 			local registry = require("mason-registry")
 
-			for _, formatter_name in ipairs(opts.ensure_formatter_installed)  do
+			for _, formatter_name in ipairs(opts.ensure_formatter_installed) do
 				local ok, formatter = pcall(registry.get_package, formatter_name)
 
 				if ok then
@@ -53,10 +54,10 @@ return {
 					end
 				end
 			end
-		end
+		end,
 	},
 	{
-		"onsails/lspkind.nvim"
+		"onsails/lspkind.nvim",
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -65,9 +66,35 @@ return {
 		build = ":TSUpdate",
 		config = function()
 			local ensure_installed = {
-				"go", "java", "javascript", "jq", "json", "json5", "kotlin", "liquid", "nginx", "php", "rust",
-				"lua", "markdown", "markdown_inline", "astro", "bash", "caddy", "css", "diff", "dockerfile", "elixir",
-				"runescript", "sql", "svelte", "tmux", "typescript", "vue", "yaml", "zig",
+				"go",
+				"java",
+				"javascript",
+				"jq",
+				"json",
+				"json5",
+				"kotlin",
+				"liquid",
+				"nginx",
+				"php",
+				"rust",
+				"lua",
+				"markdown",
+				"markdown_inline",
+				"astro",
+				"bash",
+				"caddy",
+				"css",
+				"diff",
+				"dockerfile",
+				"elixir",
+				"runescript",
+				"sql",
+				"svelte",
+				"tmux",
+				"typescript",
+				"vue",
+				"yaml",
+				"zig",
 			}
 
 			-- install required parsers
@@ -86,8 +113,8 @@ return {
 
 					-- Indentation (experimental)
 					vim.bo.indentexpr = "v:lua.require('nvim-treesitter').indentexpr()"
-				end
+				end,
 			})
-		end
-	}
+		end,
+	},
 }
