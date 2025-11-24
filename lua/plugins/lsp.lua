@@ -176,4 +176,11 @@ return {
 			})
 		end,
 	},
+	{
+		"windwp/nvim-ts-autotag",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		lazy = false,
+		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
+		opts = {},
+	},
 }
