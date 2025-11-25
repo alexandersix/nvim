@@ -16,11 +16,11 @@ return {
 			enabled = true,
 			matcher = {
 				frecency = true, -- Include frecency bonus
-				history_bonus = true -- Give more weight to recent items
+				history_bonus = true, -- Give more weight to recent items
 			},
 			debug = {
-				scores = true
-			}
+				scores = true,
+			},
 		},
 		notifier = { enabled = true },
 		quickfile = { enabled = true },
@@ -35,27 +35,23 @@ return {
 		{
 			"<leader><space>",
 			function()
-				if vim.fn.finddir('.git', '.;') ~= '' then
-					Snacks.picker.git_files() -- Only use git_files in a git repo
-				else
-					Snacks.picker.files()
-				end
+				Snacks.picker.files()
 			end,
-			desc = "Find Files"
+			desc = "Find Files",
 		},
 		{
 			"<leader>.",
 			function()
 				Snacks.picker.grep()
 			end,
-			desc = "Grep Files"
+			desc = "Grep Files",
 		},
 		{
 			"<leader>bl",
 			function()
 				Snacks.picker.buffers()
 			end,
-			desc = "Buffers"
+			desc = "Buffers",
 		},
 
 		-- gh
@@ -64,28 +60,28 @@ return {
 			function()
 				Snacks.picker.gh_issue()
 			end,
-			desc = "Open Github Issues"
+			desc = "Open Github Issues",
 		},
 		{
 			"<leader>gI",
 			function()
 				Snacks.picker.gh_issue({ state = "all" })
 			end,
-			desc = "All Github Issues"
+			desc = "All Github Issues",
 		},
 		{
 			"<leader>gp",
 			function()
 				Snacks.picker.gh_pr()
 			end,
-			desc = "Open Github PRs"
+			desc = "Open Github PRs",
 		},
 		{
 			"<leader>gP",
 			function()
 				Snacks.picker.gh_pr({ state = "all" })
 			end,
-			desc = "All Github PRs"
+			desc = "All Github PRs",
 		},
 
 		-- Scratch Buffer
@@ -94,7 +90,7 @@ return {
 			function()
 				Snacks.scratch()
 			end,
-			desc = "Toggle Scratch Buffer"
+			desc = "Toggle Scratch Buffer",
 		},
 
 		-- Terminal
@@ -103,7 +99,7 @@ return {
 			function()
 				Snacks.terminal()
 			end,
-			desc = "Toggle Terminal"
+			desc = "Toggle Terminal",
 		},
 
 		-- Zen Mode
@@ -112,7 +108,7 @@ return {
 			function()
 				Snacks.zen()
 			end,
-			desc = "Toggle Zen Mode"
+			desc = "Toggle Zen Mode",
 		},
-	}
+	},
 }
