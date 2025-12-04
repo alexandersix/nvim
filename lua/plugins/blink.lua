@@ -1,7 +1,10 @@
 return {
-	'saghen/blink.cmp',
-	dependencies = { 'rafamadriz/friendly-snippets' },
-	version = '1.*',
+	"saghen/blink.cmp",
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+	},
+	event = { "InsertEnter", "CmdlineEnter" },
+	version = "1.*",
 	opts = {
 		snippets = {
 			preset = "default",
@@ -28,7 +31,7 @@ return {
 				selection = {
 					preselect = false,
 					auto_insert = true,
-				}
+				},
 			},
 			menu = {
 				draw = {
@@ -77,5 +80,5 @@ return {
 			["<C-j>"] = { "select_next", "fallback" },
 			["<C-k>"] = { "select_prev", "fallback" },
 		},
-	}
+	},
 }
