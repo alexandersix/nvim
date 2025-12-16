@@ -183,4 +183,5 @@ return {
 		event = { "BufReadPost", "BufWritePost", "BufNewFile" },
 		opts = {},
 	},
+	{ "catgoose/vue-goto-definition.nvim", dependencies = { "neovim/nvim-lspconfig" }, config = true },
 }
